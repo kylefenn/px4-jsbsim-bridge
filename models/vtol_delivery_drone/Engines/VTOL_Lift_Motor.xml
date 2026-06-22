@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+  VTOL Delivery Drone - Lift Motor
+  Based on T-Motor U5 or similar class motor for 10" props
+  Max thrust: ~25N per motor (for 8 motors = 200N total lift capacity)
+  Optimized for hover efficiency at 9.8kg operational weight
+-->
+<brushless_dc_motor name="VTOL_Lift_Motor">
+  <!-- Motor specifications for 10" prop lift motor -->
+  <!-- KV rating (RPM per volt) - lower KV for larger props -->
+  <velocityconstant>400</velocityconstant>
+
+  <!-- Coil resistance (Ohms) -->
+  <coilresistance>0.085</coilresistance>
+
+  <!-- No-load current (Amps) -->
+  <noloadcurrent>0.8</noloadcurrent>
+
+  <!-- Maximum voltage (6S LiPo = 25.2V max, 22.2V nominal) -->
+  <maxvolts>25.2</maxvolts>
+</brushless_dc_motor>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

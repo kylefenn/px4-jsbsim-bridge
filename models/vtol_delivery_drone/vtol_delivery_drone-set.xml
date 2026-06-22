@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<!--
+  VTOL Delivery Drone - FlightGear Set File
+
+  This file configures FlightGear visualization for the VTOL drone.
+  Use with FlightGear for 3D visualization alongside PX4 simulation.
+-->
+<PropertyList>
+  <sim>
+    <description>VTOL Delivery Drone (8+1 motors, V-tail)</description>
+    <author>Kyle - AeroSandbox Conversion</author>
+    <status>alpha</status>
+    <rating>
+      <FDM type="int">3</FDM>
+      <systems type="int">2</systems>
+      <model type="int">2</model>
+      <cockpit type="int">1</cockpit>
+    </rating>
+
+    <flight-model>jsb</flight-model>
+    <aero>vtol_delivery_drone</aero>
+
+    <startup>
+      <splash-texture>Models/vtol_splash.png</splash-texture>
+    </startup>
+
+    <model>
+      <path>Models/vtol_delivery_drone.xml</path>
+      <livery>
+        <file type="string">default</file>
+      </livery>
+    </model>
+
+    <view n="0">
+      <name>Cockpit</name>
+      <type>lookfrom</type>
+      <internal type="bool">true</internal>
+      <config>
+        <x-offset-m type="double">0.0</x-offset-m>
+        <y-offset-m type="double">0.0</y-offset-m>
+        <z-offset-m type="double">-0.3</z-offset-m>
+        <pitch-offset-deg type="double">-15</pitch-offset-deg>
+        <default-field-of-view-deg type="double">90</default-field-of-view-deg>
+      </config>
+    </view>
+
+    <view n="1">
+      <name>Chase</name>
+      <type>lookat</type>
+      <internal type="bool">false</internal>
+      <config>
+        <eye-lat-deg-path>/sim/view/chase/latitude-deg</eye-lat-deg-path>
+        <eye-lon-deg-path>/sim/view/chase/longitude-deg</eye-lon-deg-path>
+        <eye-alt-ft-path>/sim/view/chase/altitude-ft</eye-alt-ft-path>
+        <eye-heading-deg-path>/sim/view/chase/heading-deg</eye-heading-deg-path>
+        <target-lat-deg-path>/position/latitude-deg</target-lat-deg-path>
+        <target-lon-deg-path>/position/longitude-deg</target-lon-deg-path>
+        <target-alt-ft-path>/position/altitude-ft</target-alt-ft-path>
+        <target-z-offset-m type="double">0.5</target-z-offset-m>
+      </config>
+    </view>
+
+    <chase-distance-m>-15</chase-distance-m>
+
+    <sound>
+      <path>Sounds/vtol_sound.xml</path>
+    </sound>
+
+    <hud>
+      <enable3d type="bool">false</enable3d>
+    </hud>
+
+    <multiplay>
+      <generic>
+        <float n="0" alias="/position/altitude-agl-ft"/>
+        <float n="1" alias="/velocities/airspeed-kt"/>
+        <int n="0" alias="/controls/engines/engine[0]/throttle"/>
+      </generic>
+    </multiplay>
+
+    <menubar>
+      <default>
+        <menu n="100">
+          <label>VTOL Drone</label>
+          <enabled type="bool">true</enabled>
+          <item>
+            <label>Motor Status</label>
+            <binding>
+              <command>dialog-show</command>
+              <dialog-name>motor-status</dialog-name>
+            </binding>
+          </item>
+        </menu>
+      </default>
+    </menubar>
+  </sim>
+
+  <consumables>
+    <fuel>
+      <tank n="0">
+        <name>Battery</name>
+        <level-lbs type="double">3.97</level-lbs>
+        <capacity-lbs type="double">3.97</capacity-lbs>
+      </tank>
+    </fuel>
+  </consumables>
+
+  <controls>
+    <engines>
+      <engine n="0"><throttle>0</throttle></engine>
+      <engine n="1"><throttle>0</throttle></engine>
+      <engine n="2"><throttle>0</throttle></engine>
+      <engine n="3"><throttle>0</throttle></engine>
+      <engine n="4"><throttle>0</throttle></engine>
+      <engine n="5"><throttle>0</throttle></engine>
+      <engine n="6"><throttle>0</throttle></engine>
+      <engine n="7"><throttle>0</throttle></engine>
+      <engine n="8"><throttle>0</throttle></engine>
+    </engines>
+    <flight>
+      <vtail-left>0</vtail-left>
+      <vtail-right>0</vtail-right>
+      <aileron-left>0</aileron-left>
+      <aileron-right>0</aileron-right>
+      <pusher-tilt>0</pusher-tilt>
+    </flight>
+  </controls>
+
+  <input>
+    <keyboard>
+      <key n="32">
+        <name>Space</name>
+        <desc>Arm/Disarm motors</desc>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/engines/armed</property>
+        </binding>
+      </key>
+    </keyboard>
+  </input>
+
+  <nasal>
+    <vtol>
+      <file>Nasal/vtol.nas</file>
+    </vtol>
+  </nasal>
+</PropertyList>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

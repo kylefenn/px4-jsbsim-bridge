@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+  VTOL Delivery Drone - Reset Conditions (Hover at 10m altitude)
+-->
+<initialize name="Hover Reset">
+  <!-- Geographic position -->
+  <latitude unit="DEG">47.397742</latitude>
+  <longitude unit="DEG">8.545594</longitude>
+  <altitude unit="M">498.0</altitude>  <!-- 10m above ground -->
+
+  <!-- Initial velocities (stationary hover) -->
+  <ubody unit="M/SEC">0.0</ubody>
+  <vbody unit="M/SEC">0.0</vbody>
+  <wbody unit="M/SEC">0.0</wbody>
+
+  <!-- Initial attitude (level) -->
+  <phi unit="DEG">0.0</phi>
+  <theta unit="DEG">0.0</theta>
+  <psi unit="DEG">0.0</psi>
+
+  <!-- Initial angular rates -->
+  <p unit="RAD/SEC">0.0</p>
+  <q unit="RAD/SEC">0.0</q>
+  <r unit="RAD/SEC">0.0</r>
+</initialize>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

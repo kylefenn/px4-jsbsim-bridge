@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+  VTOL Delivery Drone - Pusher/Tilt Motor
+  Tiltable from vertical (hover assist) to horizontal (cruise)
+  11" prop optimized for cruise efficiency at 70 mph (31 m/s)
+  Max thrust: ~25N
+-->
+<brushless_dc_motor name="VTOL_Pusher_Motor">
+  <!-- Motor specifications for 11" pusher prop -->
+  <!-- Slightly lower KV for larger prop -->
+  <velocityconstant>350</velocityconstant>
+
+  <!-- Coil resistance (Ohms) -->
+  <coilresistance>0.075</coilresistance>
+
+  <!-- No-load current (Amps) -->
+  <noloadcurrent>0.9</noloadcurrent>
+
+  <!-- Maximum voltage (6S LiPo) -->
+  <maxvolts>25.2</maxvolts>
+</brushless_dc_motor>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

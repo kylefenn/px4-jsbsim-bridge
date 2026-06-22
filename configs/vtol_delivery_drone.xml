@@ -1,0 +1,171 @@
+<!--
+  VTOL Delivery Drone - JSBSim Bridge Configuration for PX4
+
+  This file configures the interface between PX4 and JSBSim for the
+  8+1 motor VTOL delivery drone with V-tail and ailerons.
+-->
+<model name="vtol_delivery_drone">
+
+    <!-- MAVLink interface configuration -->
+    <!-- NOTE: lockstep disabled to avoid deadlock - JSBSim drives the simulation -->
+    <mavlink_interface>
+        <tcp_port>4560</tcp_port>
+        <enable_lockstep>false</enable_lockstep>
+    </mavlink_interface>
+
+    <!-- Sensor configuration -->
+    <sensors>
+        <!-- IMU sensor -->
+        <imu>
+            <jsb_acc_x>px4/acc-x</jsb_acc_x>
+            <jsb_acc_y>px4/acc-y</jsb_acc_y>
+            <jsb_acc_z>px4/acc-z</jsb_acc_z>
+            <jsb_gyro_x>px4/gyro-x</jsb_gyro_x>
+            <jsb_gyro_y>px4/gyro-y</jsb_gyro_y>
+            <jsb_gyro_z>px4/gyro-z</jsb_gyro_z>
+        </imu>
+
+        <!-- GPS sensor -->
+        <gps>
+            <jsb_gps_fix_type>px4/gps-fix-type</jsb_gps_fix_type>
+            <jsb_gps_lat>px4/gps-lat</jsb_gps_lat>
+            <jsb_gps_lon>px4/gps-lon</jsb_gps_lon>
+            <jsb_gps_alt>px4/gps-alt</jsb_gps_alt>
+            <jsb_gps_eph>px4/gps-eph</jsb_gps_eph>
+            <jsb_gps_epv>px4/gps-epv</jsb_gps_epv>
+            <jsb_gps_v_north>px4/gps-v-north</jsb_gps_v_north>
+            <jsb_gps_v_east>px4/gps-v-east</jsb_gps_v_east>
+            <jsb_gps_v_down>px4/gps-v-down</jsb_gps_v_down>
+            <jsb_gps_velocity>px4/gps-velocity</jsb_gps_velocity>
+            <jsb_gps_satellites>px4/gps-satellites-visible</jsb_gps_satellites>
+        </gps>
+
+        <!-- Barometer sensor -->
+        <barometer>
+            <jsb_baro_temp>px4/baro-temp</jsb_baro_temp>
+            <jsb_baro_air_pressure>px4/baro-abs-pressure</jsb_baro_air_pressure>
+        </barometer>
+
+        <!-- Magnetometer sensor -->
+        <magnetometer>
+        </magnetometer>
+
+        <!-- Airspeed sensor (for fixed-wing mode) -->
+        <airspeed>
+            <jsb_diff_pressure>px4/diff-pressure</jsb_diff_pressure>
+            <jsb_temperature>px4/airspeed-temp</jsb_temperature>
+        </airspeed>
+    </sensors>
+
+    <!-- Actuator configuration -->
+    <!--
+      PX4 Actuator Mapping:
+      - Channels 0-7: Lift motors (octocopter configuration)
+      - Channel 8: Pusher motor
+      - Channel 9: V-tail left servo
+      - Channel 10: V-tail right servo
+      - Channel 11: Aileron left servo
+      - Channel 12: Aileron right servo
+      - Channel 13: Pusher tilt servo
+    -->
+    <actuators>
+        <!-- Lift Motor 0: Front-Inner-Right (CW) -->
+        <channel name="motor0">
+            <index>0</index>
+            <scale>1</scale>
+            <property>fcs/esc-cmd-norm[0]</property>
+        </channel>
+
+        <!-- Lift Motor 1: Rear-Inner-Right (CCW) -->
+        <channel name="motor1">
+            <index>1</index>
+            <scale>1</scale>
+            <property>fcs/esc-cmd-norm[1]</property>
+        </channel>
+
+        <!-- Lift Motor 2: Front-Outer-Right (CW) -->
+        <channel name="motor2">
+            <index>2</index>
+            <scale>1</scale>
+            <property>fcs/esc-cmd-norm[2]</property>
+        </channel>
+
+        <!-- Lift Motor 3: Rear-Outer-Right (CCW) -->
+        <channel name="motor3">
+            <index>3</index>
+            <scale>1</scale>
+            <property>fcs/esc-cmd-norm[3]</property>
+        </channel>
+
+        <!-- Lift Motor 4: Front-Inner-Left (CCW) -->
+        <channel name="motor4">
+            <index>4</index>
+            <scale>1</scale>
+            <property>fcs/esc-cmd-norm[4]</property>
+        </channel>
+
+        <!-- Lift Motor 5: Rear-Inner-Left (CW) -->
+        <channel name="motor5">
+            <index>5</index>
+            <scale>1</scale>
+            <property>fcs/esc-cmd-norm[5]</property>
+        </channel>
+
+        <!-- Lift Motor 6: Front-Outer-Left (CCW) -->
+        <channel name="motor6">
+            <index>6</index>
+            <scale>1</scale>
+            <property>fcs/esc-cmd-norm[6]</property>
+        </channel>
+
+        <!-- Lift Motor 7: Rear-Outer-Left (CW) -->
+        <channel name="motor7">
+            <index>7</index>
+            <scale>1</scale>
+            <property>fcs/esc-cmd-norm[7]</property>
+        </channel>
+
+        <!-- Pusher Motor 8 -->
+        <channel name="motor8">
+            <index>8</index>
+            <scale>1</scale>
+            <property>fcs/esc-cmd-norm[8]</property>
+        </channel>
+
+        <!-- V-tail Left Servo -->
+        <channel name="vtail_left">
+            <index>9</index>
+            <scale>1</scale>
+            <property>fcs/vtail-left-cmd-norm</property>
+        </channel>
+
+        <!-- V-tail Right Servo -->
+        <channel name="vtail_right">
+            <index>10</index>
+            <scale>1</scale>
+            <property>fcs/vtail-right-cmd-norm</property>
+        </channel>
+
+        <!-- Aileron Left Servo -->
+        <channel name="aileron_left">
+            <index>11</index>
+            <scale>1</scale>
+            <property>fcs/aileron-left-cmd-norm</property>
+        </channel>
+
+        <!-- Aileron Right Servo -->
+        <channel name="aileron_right">
+            <index>12</index>
+            <scale>1</scale>
+            <property>fcs/aileron-right-cmd-norm</property>
+        </channel>
+
+        <!-- Pusher Tilt Servo (0=hover, 1=cruise) -->
+        <channel name="pusher_tilt">
+            <index>13</index>
+            <scale>1</scale>
+            <property>fcs/pusher-tilt-norm</property>
+        </channel>
+    </actuators>
+</model>
+
